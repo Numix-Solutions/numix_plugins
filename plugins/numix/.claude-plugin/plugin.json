@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "numix",
+  "displayName": "Numix",
+  "version": "0.1.0",
+  "description": "Work with your Numix financial data: transactions, reports, R&D tax credits, expense claims, tasks and onboarding",
+  "author": {
+    "name": "Numix",
+    "url": "https://www.numix.co"
+  },
+  "homepage": "https://www.numix.co",
+  "repository": "https://github.com/Numix-Solutions/numix_plugins",
+  "keywords": [
+    "finance",
+    "accounting",
+    "bookkeeping",
+    "r&d tax credit",
+    "expenses",
+    "numix"
+  ],
+  "icon": "./assets/icon.png",
+  "privacyPolicyUrl": "https://www.numix.co/privacy-policy"
+}

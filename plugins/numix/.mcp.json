@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "numix": {
+      "type": "http",
+      "url": "https://mcp.numix.app/mcp"
+    }
+  }
+}

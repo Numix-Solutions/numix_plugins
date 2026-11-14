@@ -1,0 +1,45 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "numix",
+  "version": "0.1.0",
+  "description": "Work with your Numix financial data: transactions, reports, R&D tax credits, expense claims, tasks and onboarding",
+  "author": {
+    "name": "Numix",
+    "url": "https://www.numix.co"
+  },
+  "homepage": "https://www.numix.co",
+  "repository": "https://github.com/Numix-Solutions/numix_plugins",
+  "keywords": [
+    "finance",
+    "accounting",
+    "bookkeeping",
+    "r&d tax credit",
+    "expenses",
+    "numix"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Numix",
+        "shortDescription": "Your Numix financial data, transactions and R&D tax credits",
+        "longDescription": "Connect to your Numix account to review transactions, check cash, burn and runway, calculate R&D tax credits, submit expense claims, and complete your onboarding and tasks.",
+        "developerName": "Numix",
+        "category": "Finance",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://www.numix.co",
+        "privacyPolicyURL": "https://www.numix.co/privacy-policy",
+        "defaultPrompt": [
+          "What are my open tasks in Numix?",
+          "Show my cash, burn and runway",
+          "Help me finish my Numix onboarding"
+        ],
+        "brandColor": "#171717",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}
