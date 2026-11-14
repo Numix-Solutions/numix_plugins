@@ -19,6 +19,7 @@
   ],
   "extensions": {
     "com.openai": {
+      "onboardingSkill": "./skills/onboarding/SKILL.md",
       "interface": {
         "displayName": "Numix",
         "shortDescription": "Your Numix financial data, transactions and R&D tax credits",
@@ -32,9 +33,9 @@
         "websiteURL": "https://www.numix.co",
         "privacyPolicyURL": "https://www.numix.co/privacy-policy",
         "defaultPrompt": [
-          "What are my open tasks in Numix?",
-          "Show my cash, burn and runway",
-          "Help me finish my Numix onboarding"
+          "Help me finish my Numix onboarding",
+          "Do I have any questions from Numix to answer?",
+          "Estimate my R&D tax credit for last year"
         ],
         "brandColor": "#171717",
         "composerIcon": "./assets/icon.png",
