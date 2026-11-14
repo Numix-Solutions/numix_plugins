@@ -14,6 +14,14 @@ Work with your [Numix](https://app.numix.app) financial data from your AI assist
 - **QuickBooks**: chart of accounts, balance sheets, vendors, purchase orders and journal entries from your connected QuickBooks account
 - **Integrations**: list your connections, and set up the banks, payroll and accounting software you use
 
+## Guided workflows
+
+The plugin includes three guided workflows. Ask for them in your own words, or run them directly:
+
+- **Onboarding** (`/numix:onboarding` in Claude): set up your Numix account step by step, as on the dashboard: company details, the banks, payroll and accounting software you use, your documents, then review and send. Your progress is saved as you go, so you can continue later here or on the dashboard.
+- **R&D tax credit** (`/numix:calculate-rd-credit` in Claude): estimate your federal and California R&D credit for a tax year. The assistant goes through your expenses, wages, contractors, prior research expenses and gross receipts with you, calculates the credit, prepares pre-filled Forms 6765 and 3523, and sends it to the Numix team for review.
+- **Expense claim** (`/numix:claim-expense` in Claude): get reimbursed for a purchase. Tell the assistant the details or share your receipts, review the claim, and submit it.
+
 ## Getting started
 
 1. You need a Numix account. Sign up or sign in at [app.numix.app](https://app.numix.app).
