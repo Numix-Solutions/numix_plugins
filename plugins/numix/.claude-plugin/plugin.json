@@ -20,5 +20,6 @@
     "numix"
   ],
   "icon": "./assets/icon.png",
-  "privacyPolicyUrl": "https://www.numix.co/privacy-policy"
+  "privacyPolicyUrl": "https://www.numix.co/privacy-policy",
+  "supportUrl": "https://www.numix.co/"
 }
