@@ -19,7 +19,8 @@ plugins/numix/
 │   ├── onboarding/SKILL.md
 │   ├── claim-expense/SKILL.md
 │   ├── calculate-rd-credit/SKILL.md
-│   └── review-transactions/SKILL.md
+│   ├── review-transactions/SKILL.md
+│   └── rnd-review/SKILL.md
 ├── assets/                      Icon and logo
 └── README.md                    Client-facing description
 ```
@@ -43,7 +44,8 @@ Both MCP configs point to the production server, `https://mcp.numix.app/mcp`, wh
 | `onboarding` | Walks a new client through the four onboarding steps of the dashboard (company details, financial connections, documents & history, review & send), picks up where they left off, submits it and sets up their connections |
 | `claim-expense` | Creates and submits one expense claim, entered by hand or read from receipts, with the files attached |
 | `calculate-rd-credit` | Estimates the R&D tax credit for one tax year: collects and confirms expenses, wages, contractors, prior research expenses and gross receipts, calculates the federal and California credits, generates Forms 6765 and 3523, and submits it to the Numix team |
-| `review-transactions` | Answers the Numix team's bookkeeping questions about unclear transactions (the dashboard's "Needs clarification" tab), and confirms the R&D status of the client's expenses month by month, grouping same-vendor expenses and reusing earlier months' decisions |
+| `review-transactions` | Answers the Numix team's bookkeeping questions about unclear transactions (the dashboard's "Needs clarification" tab), a month at a time |
+| `rnd-review` | Confirms the R&D status of the client's expenses for one tax year: finds similar expenses across the year with `fetch_similar_expenses` and reviews them as groups, biggest first |
 
 ## Test it locally
 
