@@ -1,0 +1,20 @@
+{
+  "name": "numix",
+  "interface": {
+    "displayName": "Numix"
+  },
+  "plugins": [
+    {
+      "name": "numix",
+      "source": {
+        "source": "local",
+        "path": "./plugins/numix"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Finance"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "numix",
+  "description": "The Numix plugin: your Numix financial data, onboarding, transaction review, R&D tax credits and expense claims",
+  "owner": {
+    "name": "Numix Solutions Inc",
+    "url": "https://www.numix.co"
+  },
+  "plugins": [
+    {
+      "name": "numix",
+      "source": "./plugins/numix",
+      "description": "Work with your Numix financial data: transactions, reports, R&D tax credits, expense claims, tasks and onboarding",
+      "category": "finance"
+    }
+  ]
+}

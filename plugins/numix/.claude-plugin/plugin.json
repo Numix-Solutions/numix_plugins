@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "numix",
   "displayName": "Numix",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Work with your Numix financial data: transactions, reports, R&D tax credits, expense claims, tasks and onboarding",
   "author": {
     "name": "Numix",
@@ -10,6 +10,7 @@
   },
   "homepage": "https://www.numix.co",
   "repository": "https://github.com/Numix-Solutions/numix_plugins",
+  "license": "MIT",
   "keywords": [
     "finance",
     "accounting",

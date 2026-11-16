@@ -26,7 +26,13 @@ The plugin includes four guided workflows. Ask for them in your own words, or ru
 ## Getting started
 
 1. You need a Numix account. Sign up or sign in at [app.numix.app](https://app.numix.app).
-2. Install the plugin. The first time a Numix tool runs, your assistant asks you to sign in to Numix in your browser.
+2. Install the plugin. In Claude, add Numix from the directory, or in Claude Code run:
+
+   ```
+   /plugin install numix --marketplace Numix-Solutions/numix_plugins
+   ```
+
+   The first time a Numix tool runs, your assistant asks you to sign in to Numix in your browser.
 3. Ask, for example: "What are my open tasks in Numix?" or "Show my cash, burn and runway".
 
 ## Security

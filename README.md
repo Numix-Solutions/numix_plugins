@@ -7,6 +7,9 @@ What the plugin does for clients is described in [plugins/numix/README.md](plugi
 ## Layout
 
 ```text
+.claude-plugin/marketplace.json  Marketplace for Claude Code (lists plugins/numix)
+.agents/plugins/marketplace.json Marketplace for ChatGPT and Codex (lists plugins/numix)
+LICENSE                          MIT
 plugins/numix/
 ├── .claude-plugin/plugin.json   Claude manifest
 ├── plugin.json                  OpenAI manifest (portable format, settings under extensions.com.openai)
@@ -52,7 +55,20 @@ claude --plugin-dir ./plugins/numix
 
 The first time a Numix tool runs, you sign in to Numix in your browser.
 
-**ChatGPT desktop / Codex**: add the `plugins/numix` folder to a local marketplace file (`.agents/plugins/marketplace.json` in this repository, or `~/.agents/plugins/marketplace.json`), then restart the app. See [Package your plugin](https://developers.openai.com/plugins/build/plugins).
+**ChatGPT desktop / Codex**: this repository is a marketplace (`.agents/plugins/marketplace.json`). Add it, then install Numix from it:
+
+```bash
+codex plugin marketplace add ./
+```
+
+To turn it on for one project only, add this to the project's `.codex/config.toml` (trusted projects only):
+
+```toml
+[plugins."numix@numix"]
+enabled = true
+```
+
+After changing the plugin, run `codex plugin marketplace upgrade numix` and restart the ChatGPT desktop app. When the plugin is set up, it starts the `onboarding` skill (`onboardingSkill` in `plugin.json`), which ends right away for clients who are already onboarded. See [Package your plugin](https://developers.openai.com/plugins/build/plugins).
 
 ## Validate
 
@@ -77,5 +93,10 @@ A skill is a `SKILL.md` that the assistant follows to run a workflow with the Nu
 
 ## Publishing
 
-- **Anthropic's directory**: submit from the plugin directory submission page. Still missing: a license (a `LICENSE` file or `license` in the manifest).
-- **OpenAI**: submit the remote MCP server and the skills on the OpenAI platform. Before that, the MCP server needs the `openid` and `email` OAuth scopes and a UserInfo endpoint that returns `email` and `email_verified`.
+- **Anthropic's directory**: submit at [claude.ai/directory/manage](https://claude.ai/directory/manage) as a **Plugin bundle** (repository `Numix-Solutions/numix_plugins`, plugin path `plugins/numix`, branch `main`). The repository must be public before the listing goes live. The MCP server is listed separately as an **MCP connector**; pair the two listings. Every merge to `main` becomes a new version, so bump `version` in both manifests.
+- **License**: MIT (`LICENSE` at the repository root, `license` in both manifests).
+- **OpenAI**: submit through the plugin submission portal, **With MCP** (our server is a remote HTTPS endpoint), together with the skills. Approved plugins are listed in the directory shared by ChatGPT and Codex. Before submitting:
+  - the MCP server needs the `openid` and `email` OAuth scopes and a UserInfo endpoint that returns `email` and `email_verified: true`
+  - verify the domain: serve the portal's token at `https://mcp.numix.app/.well-known/openai-apps-challenge`
+  - set `termsOfServiceURL` in `plugin.json`
+  - keep the plugin free of lifecycle hooks: plugins with hooks aren't eligible for the directory
