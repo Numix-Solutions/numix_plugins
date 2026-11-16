@@ -72,10 +72,10 @@
               "expected_behavior": "Show the 2025 qualified research expenses (supplies, wages, contractors) and the prior years' research expenses and gross receipts, ask the user to confirm them, then report the estimated federal and California R&D credits. Nothing is submitted to Numix."
             },
             {
-              "description": "Check cash, burn and runway",
-              "prompt": "Show my cash on hand, net burn and runway.",
-              "tools_triggered": "fetch_financial_health",
-              "expected_behavior": "Report the current cash on hand, the monthly net burn and the runway in months, with the recent monthly history, using only the values the tool returns."
+              "description": "List open tasks on Numix",
+              "prompt": "What are my open tasks in Numix?",
+              "tools_triggered": "fetch_tasks",
+              "expected_behavior": "List the organization's open tasks by priority and due date, overdue ones first, each with its title, due date, progress (e.g. \"1 of 3 done\") and the link where it is completed. Nothing is changed."
             }
           ],
           "negative": [
