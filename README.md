@@ -70,7 +70,7 @@ To turn it on for one project only, add this to the project's `.codex/config.tom
 enabled = true
 ```
 
-After changing the plugin, run `codex plugin marketplace upgrade numix` and restart the ChatGPT desktop app. When the plugin is set up, it starts the `onboarding` skill (`onboardingSkill` in `plugin.json`), which ends right away for clients who are already onboarded. See [Package your plugin](https://developers.openai.com/plugins/build/plugins).
+After changing the plugin, run `codex plugin marketplace upgrade numix` and restart the ChatGPT desktop app. There's no `onboardingSkill` in `plugin.json` on purpose: ChatGPT would offer it as "Set up Numix" on every install, and our `onboarding` skill is the Numix client onboarding, which most clients finished long ago. See [Package your plugin](https://developers.openai.com/plugins/build/plugins).
 
 ## Validate
 
