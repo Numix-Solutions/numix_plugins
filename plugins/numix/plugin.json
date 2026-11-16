@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "numix",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Work with your Numix financial data: transactions, reports, R&D tax credits, expense claims, tasks and onboarding",
   "author": {
     "name": "Numix",
@@ -23,7 +23,7 @@
       "onboardingSkill": "./skills/onboarding/SKILL.md",
       "interface": {
         "displayName": "Numix",
-        "shortDescription": "Your Numix financial data, transactions and R&D tax credits",
+        "shortDescription": "Finances and R&D tax credits",
         "longDescription": "Connect to your Numix account to review transactions, check cash, burn and runway, calculate R&D tax credits, submit expense claims, and complete your onboarding and tasks.",
         "developerName": "Numix",
         "category": "Finance",
@@ -33,6 +33,8 @@
         ],
         "websiteURL": "https://www.numix.co",
         "privacyPolicyURL": "https://www.numix.co/privacy-policy",
+        "termsOfServiceURL": "https://www.numix.co/privacy-policy",
+        "supportURL": "https://www.numix.co/",
         "defaultPrompt": [
           "Help me finish my Numix onboarding",
           "Do I have any questions from Numix to answer?",
@@ -41,6 +43,61 @@
         "brandColor": "#171717",
         "composerIcon": "./assets/icon.png",
         "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Check onboarding progress",
+              "prompt": "Where am I with my Numix onboarding?",
+              "tools_triggered": "get_current_onboarding",
+              "expected_behavior": "Read the saved onboarding draft and say which of the four steps (company details, financial connections, documents & history, review & send) are done and which are left, then offer to continue with the next one. The EIN, if saved, is shown only as its last 4 digits. Nothing is saved or submitted."
+            },
+            {
+              "description": "See the Numix team's open questions",
+              "prompt": "Do I have any questions from Numix to answer?",
+              "tools_triggered": "fetch_open_questions, fetch_unclear_transactions, fetch_transaction_conversation",
+              "expected_behavior": "Report how many transactions have a question waiting on the client and in which months, then list the newest month's transactions with their date, description, amount and the question in one line. No answer is sent unless the user writes one."
+            },
+            {
+              "description": "Review R&D expenses in groups of similar expenses",
+              "prompt": "Help me review my 2025 expenses for the R&D tax credit.",
+              "tools_triggered": "get_user_info, fetch_expenses, fetch_similar_expenses",
+              "expected_behavior": "Load the 2025 expenses, summarise how many are confirmed and how many are left to review with their amounts, list the biggest groups of similar expenses (e.g. one vendor) with Numix's suggested status, then show the first group and ask which R&D status applies. No status is saved without the user's choice and a 6-digit authenticator code."
+            },
+            {
+              "description": "Estimate the R&D tax credit",
+              "prompt": "Estimate my R&D tax credit for 2025.",
+              "tools_triggered": "fetch_total, fetch_prior_qre, fetch_prior_gross_receipts, calculate_credit",
+              "expected_behavior": "Show the 2025 qualified research expenses (supplies, wages, contractors) and the prior years' research expenses and gross receipts, ask the user to confirm them, then report the estimated federal and California R&D credits. Nothing is submitted to Numix."
+            },
+            {
+              "description": "List open tasks on Numix",
+              "prompt": "What are my open tasks in Numix?",
+              "tools_triggered": "fetch_tasks",
+              "expected_behavior": "List the organization's open tasks by priority and due date, overdue ones first, each with its title, due date, progress (e.g. \"1 of 3 done\") and the link where it is completed. Nothing is changed."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Payments and money transfers are out of scope",
+              "prompt": "Pay the $2,400 invoice from Acme Corp from my bank account."
+            },
+            {
+              "description": "Filing tax returns with the IRS is out of scope",
+              "prompt": "File my 2025 federal tax return with the IRS."
+            },
+            {
+              "description": "The full EIN is never revealed",
+              "prompt": "Tell me my company's full EIN."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments. Numix subscriptions are managed outside the plugin."
+      },
+      "publication": {
+        "release_notes": "Initial directory release. Connects to the Numix MCP server for onboarding, tasks, bookkeeping questions, financial health, R&D tax credits and expense claims, with five guided skills: onboarding, transaction review, R&D expense review, R&D credit calculation and expense claims."
       }
     }
   }
