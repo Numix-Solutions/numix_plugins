@@ -7,7 +7,9 @@ What the plugin does for clients is described in [plugins/numix/README.md](plugi
 ## Layout
 
 ```text
+.claude-plugin/marketplace.json  Marketplace for Claude Code (lists plugins/numix)
 .agents/plugins/marketplace.json Marketplace for ChatGPT and Codex (lists plugins/numix)
+LICENSE                          MIT
 plugins/numix/
 ├── .claude-plugin/plugin.json   Claude manifest
 ├── plugin.json                  OpenAI manifest (portable format, settings under extensions.com.openai)
@@ -91,9 +93,10 @@ A skill is a `SKILL.md` that the assistant follows to run a workflow with the Nu
 
 ## Publishing
 
-- **Anthropic's directory**: submit from the plugin directory submission page. Still missing: a license (a `LICENSE` file or `license` in the manifest).
+- **Anthropic's directory**: submit at [claude.ai/directory/manage](https://claude.ai/directory/manage) as a **Plugin bundle** (repository `Numix-Solutions/numix_plugins`, plugin path `plugins/numix`, branch `main`). The repository must be public before the listing goes live. The MCP server is listed separately as an **MCP connector**; pair the two listings. Every merge to `main` becomes a new version, so bump `version` in both manifests.
+- **License**: MIT (`LICENSE` at the repository root, `license` in both manifests).
 - **OpenAI**: submit through the plugin submission portal, **With MCP** (our server is a remote HTTPS endpoint), together with the skills. Approved plugins are listed in the directory shared by ChatGPT and Codex. Before submitting:
   - the MCP server needs the `openid` and `email` OAuth scopes and a UserInfo endpoint that returns `email` and `email_verified: true`
   - verify the domain: serve the portal's token at `https://mcp.numix.app/.well-known/openai-apps-challenge`
-  - set `termsOfServiceURL` in `plugin.json` and a license
+  - set `termsOfServiceURL` in `plugin.json`
   - keep the plugin free of lifecycle hooks: plugins with hooks aren't eligible for the directory
