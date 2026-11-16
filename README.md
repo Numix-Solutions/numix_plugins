@@ -100,5 +100,5 @@ A skill is a `SKILL.md` that the assistant follows to run a workflow with the Nu
 - **OpenAI**: submit through the plugin submission portal, **With MCP** (our server is a remote HTTPS endpoint), together with the skills. Approved plugins are listed in the directory shared by ChatGPT and Codex. Before submitting:
   - the MCP server needs the `openid` and `email` OAuth scopes and a UserInfo endpoint that returns `email` and `email_verified: true`
   - verify the domain: serve the portal's token at `https://mcp.numix.app/.well-known/openai-apps-challenge`
-  - set `termsOfServiceURL` in `plugin.json`
+  - `termsOfServiceURL` points to the privacy policy for now: replace it with a terms of service page when there is one
   - keep the plugin free of lifecycle hooks: plugins with hooks aren't eligible for the directory
