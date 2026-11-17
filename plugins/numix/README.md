@@ -16,12 +16,13 @@ Work with your [Numix](https://app.numix.app) financial data from your AI assist
 
 ## Guided workflows
 
-The plugin includes five guided workflows. Ask for them in your own words, or run them directly:
+The plugin includes six guided workflows. Ask for them in your own words, or run them directly:
 
 - **Onboarding** (`/numix:onboarding` in Claude): set up your Numix account step by step, as on the dashboard: company details, the banks, payroll and accounting software you use, your documents, then review and send. Your progress is saved as you go, so you can continue later here or on the dashboard.
 - **R&D tax credit** (`/numix:calculate-rd-credit` in Claude): estimate your federal and California R&D credit for a tax year. The assistant goes through your expenses, wages, contractors, prior research expenses and gross receipts with you, calculates the credit, prepares pre-filled Forms 6765 and 3523, and sends it to the Numix team for review.
 - **Transaction review** (`/numix:review-transactions` in Claude): answer the Numix team's questions about unclear transactions, a month at a time.
 - **R&D expense review** (`/numix:rnd-review` in Claude): confirm which of your expenses for a tax year are R&D. Similar expenses across the year are grouped, biggest groups first, so you decide once for a whole group instead of one expense at a time.
+- **Financial overview** (`/numix:financial-overview` in Claude): see your cash on hand, net burn and runway at a glance, then go deeper: monthly income and expenses, trends, cash by account, a summary for any months, what happens to runway if spending changes, and why a month moved, from that month's transactions.
 - **Expense claim** (`/numix:claim-expense` in Claude): get reimbursed for a purchase. Tell the assistant the details or share your receipts, review the claim, and submit it.
 
 ## Getting started

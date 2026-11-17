@@ -20,7 +20,8 @@ plugins/numix/
 │   ├── claim-expense/SKILL.md
 │   ├── calculate-rd-credit/SKILL.md
 │   ├── review-transactions/SKILL.md
-│   └── rnd-review/SKILL.md
+│   ├── rnd-review/SKILL.md
+│   └── financial-overview/SKILL.md
 ├── assets/                      Icon and logo
 └── README.md                    Client-facing description
 ```
@@ -46,6 +47,7 @@ Both MCP configs point to the production server, `https://mcp.numix.app/mcp`, wh
 | `calculate-rd-credit` | Estimates the R&D tax credit for one tax year: collects and confirms expenses, wages, contractors, prior research expenses and gross receipts, calculates the federal and California credits, generates Forms 6765 and 3523, and submits it to the Numix team |
 | `review-transactions` | Answers the Numix team's bookkeeping questions about unclear transactions (the dashboard's "Needs clarification" tab), a month at a time |
 | `rnd-review` | Confirms the R&D status of the client's expenses for one tax year: finds similar expenses across the year with `fetch_similar_expenses` and reviews them as groups, biggest first |
+| `financial-overview` | Explains the client's finances from the Financial Health report (`fetch_financial_health`): cash, net burn, runway, monthly history, trends, cash by account, period summaries with a cash bridge, what-if runway, and why a month moved, from that month's bank transactions. Read-only |
 
 ## Test it locally
 
