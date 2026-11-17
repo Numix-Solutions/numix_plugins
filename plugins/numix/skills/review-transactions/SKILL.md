@@ -25,6 +25,16 @@ The client's answers go straight to Numix's bookkeepers. Send only what the clie
 - `fetch_transaction_conversation`: the question and every reply on one transaction, oldest first. Messages from `@numix.co` addresses are the Numix team.
 - `answer_transaction_question`: sends the client's answer. The question then waits on Numix.
 
+## The client's bank connector (optional, read-only)
+
+Some banks have their own connector that the client may have turned on in the same chat (e.g. Mercury, Grasshopper, Rho). When a transaction comes from such a bank, its details (the note, the counterparty, the card, whether a receipt is attached) can help the client answer faster. Rules:
+
+- **Only to answer Numix's questions.** Look up only the transactions in this review, nothing else in the client's bank.
+- **Read only.** Never use a bank tool that changes anything: no notes, categories, receipts, payments, transfers or approvals, even if the client asks during this session. If they want to change something in their bank, they do it in their bank's app.
+- **Ask first, for each connector.** Before the first lookup in a bank, ask once, e.g.: "Your Mercury connector is on. Can I look up these transactions there to help you answer? I'll only read them." Look up nothing until the client says yes. If they say no, don't ask again for that bank in this session.
+- **Evidence, not answers.** What the bank shows is a suggestion for the client. The client still gives or confirms every answer.
+- If no bank connector is on, skip this: the review works the same without it. Don't ask the client to connect one.
+
 ## Step 0. Before you start
 
 1. Silently call `get_user_info`, and `fetch_open_questions` for this year and last year.
@@ -38,14 +48,16 @@ The client's answers go straight to Numix's bookkeepers. Send only what the clie
 2. Call `fetch_unclear_transactions` with the first and last day of the month. If `more` is true, load the next `page` too.
 3. For each transaction, call `fetch_transaction_conversation`. Numix's question is their latest message (from a `@numix.co` address); earlier messages are the conversation so far.
 4. Show a short list, by date: date · description · amount · the question in one line. Below it, one line, e.g. "3 questions waiting on you in September 2026."
+5. If any of these transactions come from a bank whose connector is on in this chat (see the transaction's bank name), ask the client before using it (see "The client's bank connector"). Once they agree, look up each of those transactions there: the same amount, a date within 3 days, and a similar counterparty or description. Use a match only when exactly one transaction fits; otherwise show nothing from the bank for it.
 
 ## Step 2. Answer one by one
 
 For each transaction:
 
 1. **Show it**: date, description, amount and current category, then Numix's question in full, and the earlier messages if there are any.
-2. **Get the client's answer**, in their own words. You may help them say it clearly (e.g. turn "lunch w/ team" into "Team lunch during the September offsite"), but send only what they confirm.
-3. If the answer needs a document (a receipt or invoice), it can't be sent here: ask the client to upload it on the dashboard (https://app.numix.app/dashboard?action=upload), and mention it in their answer (e.g. "Receipt uploaded on the dashboard").
+   If the client's bank has a match, show what it says below the question, labelled with the bank (e.g. "From Mercury: note "staging servers – Q3", card ••4421 (Dana), receipt attached"), and suggest an answer based on it.
+2. **Get the client's answer**, in their own words, or their OK on the suggested one. You may help them say it clearly (e.g. turn "lunch w/ team" into "Team lunch during the September offsite"), but send only what they confirm.
+3. If the answer needs a document (a receipt or invoice), it can't be sent here: ask the client to upload it on the dashboard (https://app.numix.app/dashboard?action=upload), and mention it in their answer (e.g. "Receipt uploaded on the dashboard"). If their bank shows the receipt is attached there, they can say so instead (e.g. "Receipt is attached in Mercury").
 4. **Send it** with `answer_transaction_question`, then show one line: "✓ Sent: Aug 12 · AWS · $1,240.00", and the progress: "2 of 5 answered."
 
 **Similar questions.** If other transactions in the list are from the same vendor and have the same question, offer to send the same answer to them, as a numbered list. Reply **all**, **all except 2**, or **none**. Send one answer per transaction.
