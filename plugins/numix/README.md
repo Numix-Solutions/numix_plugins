@@ -48,6 +48,8 @@ The plugin includes five guided workflows. Ask for them in your own words, or ru
 - **Numix MCP server** (`https://mcp.numix.app/mcp`): every tool call. It reads from and writes to your Numix account.
 - **Numix file storage on Amazon S3** (`*.s3.amazonaws.com`): files you share for onboarding (e.g. your EIN letter, financial documents) and receipts for expense claims. The assistant uploads each file with a `curl` command to a one-time upload link that the Numix MCP server creates for your account, valid for 5 minutes. Files are only uploaded when you ask to attach or read one.
 
+- **Your bank's connector, if you've turned one on in the same chat** (e.g. Mercury): only while you answer Numix's questions about your transactions, and only after you agree. The assistant reads the matching transactions there to help you answer; it never changes anything in your bank. Nothing from your bank goes to Numix except the answers you confirm.
+
 The plugin sends data nowhere else, and stores nothing on your computer. Numix keeps your records for as long as you have an account; see our [Privacy Policy](https://www.numix.co/privacy-policy).
 
 Read our [Privacy Policy](https://www.numix.co/privacy-policy).
